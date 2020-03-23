@@ -365,4 +365,3 @@ callbacks are called:
 API Reference
 -------------
 
-.. kernel-doc:: include/exec/memory.h

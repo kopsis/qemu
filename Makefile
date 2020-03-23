@@ -1216,6 +1216,53 @@ ifdef SIGNCODE
 endif # SIGNCODE
 endif # CONFIG_WIN
 
+RUNTIME_DIR = "c:/msys64/mingw64/bin"
+RUNTIME_DLLS = \
+		$(RUNTIME_DIR)/libatk-1.0-0.dll \
+		$(RUNTIME_DIR)/libbz2-1.dll \
+		$(RUNTIME_DIR)/libcairo-2.dll \
+		$(RUNTIME_DIR)/libcairo-gobject-2.dll \
+		$(RUNTIME_DIR)/libdatrie-1.dll \
+		$(RUNTIME_DIR)/libepoxy-0.dll \
+		$(RUNTIME_DIR)/libexpat-1.dll \
+		$(RUNTIME_DIR)/libffi-6.dll \
+		$(RUNTIME_DIR)/libfontconfig-1.dll \
+		$(RUNTIME_DIR)/libfreetype-6.dll \
+		$(RUNTIME_DIR)/libfribidi-0.dll \
+		$(RUNTIME_DIR)/libgcc_s_seh-1.dll \
+		$(RUNTIME_DIR)/libgdk_pixbuf-2.0-0.dll \
+		$(RUNTIME_DIR)/libgdk-3-0.dll \
+		$(RUNTIME_DIR)/libgio-2.0-0.dll \
+		$(RUNTIME_DIR)/libglib-2.0-0.dll \
+		$(RUNTIME_DIR)/libgmodule-2.0-0.dll \
+		$(RUNTIME_DIR)/libgobject-2.0-0.dll \
+		$(RUNTIME_DIR)/libgraphite2.dll \
+		$(RUNTIME_DIR)/libgtk-3-0.dll \
+		$(RUNTIME_DIR)/libharfbuzz-0.dll \
+		$(RUNTIME_DIR)/libiconv-2.dll \
+		$(RUNTIME_DIR)/libintl-8.dll \
+		$(RUNTIME_DIR)/libjpeg-8.dll \
+		$(RUNTIME_DIR)/liblzo2-2.dll \
+		$(RUNTIME_DIR)/libpango-1.0-0.dll \
+		$(RUNTIME_DIR)/libpangocairo-1.0-0.dll \
+		$(RUNTIME_DIR)/libpangoft2-1.0-0.dll \
+		$(RUNTIME_DIR)/libpangowin32-1.0-0.dll \
+		$(RUNTIME_DIR)/libpcre-1.dll \
+		$(RUNTIME_DIR)/libpixman-1-0.dll \
+		$(RUNTIME_DIR)/libpng16-16.dll \
+		$(RUNTIME_DIR)/libssp-0.dll \
+		$(RUNTIME_DIR)/libstdc++-6.dll \
+		$(RUNTIME_DIR)/libthai-0.dll \
+		$(RUNTIME_DIR)/libwinpthread-1.dll \
+		$(RUNTIME_DIR)/libzstd.dll \
+		$(RUNTIME_DIR)/SDL2.dll \
+		$(RUNTIME_DIR)/zlib1.dll
+
+.PHONY: copydlls
+copydlls:
+	for d in $(RUNTIME_DLLS); do \
+	cp $$d $(DLL_PATH) ; done
+
 # Add a dependency on the generated files, so that they are always
 # rebuilt before other object files
 ifneq ($(wildcard config-host.mak),)
